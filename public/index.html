@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信</title>
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+    <!-- 微信首页容器 -->
+    <div class="wechat-container">
+        <!-- 微信头部 -->
+        <div class="wechat-header">
+            <div class="header-title">通讯录</div>
+        </div>
+
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" placeholder="搜索">
+                <div class="search-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M16.436 15.085l3.94 4.01a1 1 0 01-1.425 1.402l-3.938-4.006a7.5 7.5 0 111.423-1.406zM10.5 16a5.5 5.5 0 100-11 5.5 5.5 0 000 11z" fill="#999"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- 联系人列表 -->
+        <div class="contact-list" id="contactList">
+            <!-- 女性联系人 -->
+            <div class="contact-item" data-contact-id="girl" data-contact-name="小雨">
+                <div class="contact-avatar">
+                    <img src="images/girl.png" alt="小雨">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">小雨</div>
+                    <div class="contact-status">在线</div>
+                </div>
+                <div class="contact-time">刚刚</div>
+            </div>
+
+            <!-- 男性联系人 -->
+            <div class="contact-item" data-contact-id="boy" data-contact-name="陈阳">
+                <div class="contact-avatar">
+                    <img src="images/boy.png" alt="陈阳">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">陈阳</div>
+                    <div class="contact-status">在线</div>
+                </div>
+                <div class="contact-time">刚刚</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 聊天页面容器（初始隐藏） -->
+    <div class="chat-container" id="chatContainer" style="display: none;">
+        <!-- 聊天头部 -->
+        <div class="chat-header">
+            <div class="back-button" id="backButton">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="#333"/>
+                </svg>
+            </div>
+            <div class="header-info center">
+                <div class="header-details">
+                    <div class="header-name" id="chatName">联系人</div>
+                    <div class="header-status">在线</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="resetButton" class="reset-button" title="重置对话">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12C4 7.58172 7.58172 4 12 4C14.5264 4 16.7792 5.17107 18.2454 7.00085L16 7V9H21V4H19V6.31235C17.1608 4.18693 14.7173 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12H20C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12Z" fill="currentColor"/>
+                        <path d="M8.5 12.5L11 15L15.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 输入状态提示 -->
+        <div class="typing-indicator" id="typingIndicator">
+            <span class="typing-text">对方正在输入...</span>
+        </div>
+
+        <!-- 聊天内容区域 -->
+        <div class="chat-content" id="chatContent">
+            <!-- 消息将动态添加到这里 -->
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="chat-input-container">
+            <div class="input-wrapper">
+                <input type="text" id="messageInput" class="message-input" placeholder="输入消息..." maxlength="200">
+                <button id="sendButton" class="send-button">发送</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认对话框 -->
+    <div class="confirm-dialog" id="confirmDialog">
+        <div class="dialog-content">
+            <div class="dialog-title">重置对话</div>
+            <div class="dialog-message">确定要清空所有聊天记录并重置对话吗？此操作无法撤销。</div>
+            <div class="dialog-buttons">
+                <button class="dialog-button cancel" id="cancelButton">取消</button>
+                <button class="dialog-button confirm" id="confirmButton">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chat.js"></script>
+</body>
+</html>

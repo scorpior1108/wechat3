@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # 微信聊天应用
+  wechat-chat-app:
+    image: ghcr.io/${GITHUB_USERNAME:-yourusername}/wechat-chat-app:latest
+    container_name: wechat-chat-app
+    ports:
+      - "4444:4444"
+    environment:
+      - NODE_ENV=production
+      - AI_API_KEY=${AI_API_KEY}
+      - AI_API_KEY_GIRL=${AI_API_KEY_GIRL}
+      - AI_API_KEY_BOY=${AI_API_KEY_BOY}
+      - PORT=4444
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4444"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
